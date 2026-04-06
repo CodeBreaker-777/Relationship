@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>7th November 🌙</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400&family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300;1,500&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0c0612; --surface: #1a0d2e;
+      --violet: #7c4dbd; --lavender: #b89ee8;
+      --gold: #c9996a; --cream: #f5f0ff;
+      --muted: #6a537a;
+    }
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      background-image:
+        radial-gradient(ellipse 65% 50% at 25% 15%, rgba(124,77,189,.25) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 75% 85%, rgba(201,153,106,.12) 0%, transparent 55%);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      display: flex; flex-direction: column; align-items: center;
+      padding: 60px 20px 80px;
+    }
+    /* stars */
+    .stars { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+    .star {
+      position: absolute; border-radius: 50%;
+      background: #e8e0ff; animation: tw ease-in-out infinite;
+    }
+    @keyframes tw { 0%,100%{opacity:.05;} 50%{opacity:.45;} }
+
+    .wrap { position: relative; z-index: 1; max-width: 640px; width: 100%; }
+
+    /* back link */
+    .back {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-style: italic; font-size: 13px; color: var(--muted);
+      text-decoration: none; letter-spacing: .08em;
+      margin-bottom: 48px;
+      transition: color .2s;
+    }
+    .back:hover { color: var(--lavender); }
+
+    /* hero */
+    .hero-date {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(36px, 9vw, 72px);
+      font-weight: 700; color: var(--cream);
+      letter-spacing: .06em; line-height: 1;
+      text-align: center;
+      animation: rise 1s ease both;
+    }
+    .hero-date span { color: var(--violet); }
+    @keyframes rise { from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);} }
+
+    .hero-sub {
+      text-align: center; font-style: italic;
+      font-size: clamp(15px, 3vw, 20px);
+      color: var(--lavender); opacity: .8;
+      margin-top: 10px; margin-bottom: 50px;
+      animation: rise 1s .2s both;
+    }
+
+    /* moon */
+    .moon {
+      display: block; text-align: center;
+      font-size: 56px; margin-bottom: 36px;
+      animation: sway 5s ease-in-out infinite, rise 1s .1s both;
+    }
+    @keyframes sway {
+      0%,100%{transform:rotate(-5deg);}
+      50%{transform:rotate(5deg);}
+    }
+
+    /* divider */
+    .divider {
+      display: flex; align-items: center; gap: 12px;
+      margin: 0 auto 40px; max-width: 320px;
+      animation: rise 1s .35s both;
+    }
+    .divider::before,.divider::after{content:'';flex:1;height:1px;}
+    .divider::before{background:linear-gradient(to right,transparent,var(--gold));}
+    .divider::after {background:linear-gradient(to left, transparent,var(--gold));}
+    .divider span{color:var(--gold);font-size:16px;}
+
+    /* card */
+    .card {
+      background: rgba(26,13,46,.7);
+      border: 1px solid rgba(124,77,189,.2);
+      border-radius: 6px;
+      padding: 44px 48px;
+      box-shadow: 0 4px 40px rgba(0,0,0,.5), 0 0 0 1px rgba(124,77,189,.08);
+      animation: rise 1s .4s both;
+      position: relative;
+    }
+    .card::before,.card::after{
+      content:''; position:absolute; width:36px; height:36px;
+      border-color:var(--gold); border-style:solid; opacity:.35;
+    }
+    .card::before{top:14px;left:14px;border-width:1px 0 0 1px;}
+    .card::after{bottom:14px;right:14px;border-width:0 1px 1px 0;}
+
+    .label {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 10px; letter-spacing: .22em;
+      color: var(--violet); text-transform: uppercase;
+      margin-bottom: 20px; display: block;
+    }
+    .story-text {
+      font-size: clamp(15px, 2.5vw, 17.5px);
+      line-height: 1.95; color: #cbbfe0;
+      font-style: italic;
+    }
+    .story-text .hi {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3em; color: var(--lavender);
+      font-style: italic; font-weight: 600;
+    }
+    .story-text .em { color: var(--gold); font-style: normal; font-weight: 500; }
+
+    /* quote block */
+    .quote {
+      margin-top: 36px; padding: 24px 28px;
+      border-left: 2px solid var(--violet);
+      background: rgba(124,77,189,.08);
+      border-radius: 0 4px 4px 0;
+    }
+    .quote p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic; font-size: 16px;
+      color: var(--lavender); line-height: 1.7;
+    }
+    .quote cite {
+      display: block; margin-top: 10px;
+      font-size: 12px; color: var(--muted);
+      letter-spacing: .15em; font-style: normal;
+    }
+
+    /* nav */
+    .nav {
+      display: flex; justify-content: center; gap: 20px;
+      margin-top: 44px;
+      animation: rise 1s .6s both;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 0 32px; height: 50px;
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 11px; letter-spacing: .12em;
+      color: var(--cream); text-decoration: none;
+      border-radius: 4px; transition: transform .15s, box-shadow .15s;
+    }
+    .btn-home {
+      background: linear-gradient(135deg, #3d1f6e 0%, #1a0d2e 100%);
+      box-shadow: 0 0 0 1px rgba(124,77,189,.4), 0 4px 16px rgba(0,0,0,.4);
+    }
+    .btn-next {
+      background: linear-gradient(135deg, #c94f72 0%, #7a1f3a 100%);
+      box-shadow: 0 0 0 1px rgba(201,79,114,.4), 0 4px 16px rgba(201,79,114,.25);
+    }
+    .btn:hover { transform: scale(1.06); }
+    .btn:active { transform: scale(.97); }
+
+    @media(max-width:500px){
+      .card{padding:32px 24px;}
+      .nav{flex-direction:column;align-items:center;}
+    }
+  </style>
+</head>
+<body>
+  <div class="stars" id="stars"></div>
+
+  <div class="wrap">
+    <a href="{{ url_for('home') }}" class="back">← back home</a>
+
+    <span class="moon">🌙</span>
+    <div class="hero-date"><span>7</span> November</div>
+    <p class="hero-sub">The night everything began.</p>
+
+    <div class="divider"><span>✦</span></div>
+
+    <div class="card">
+      <span class="label">The First Hii</span>
+      <p class="story-text">
+        It was a night neither of us planned for. You were <span class="em">sad from a breakup</span>,
+        and I was <span class="em">tired from exams</span> — two people who probably should have been
+        sleeping. But instead, we talked.<br><br>
+
+        That first <span class="hi">"Hii"</span> opened something. We shared things we don't usually share
+        with strangers. You thought it was just one conversation, one night, one person who would fade away
+        by morning. But we kept going — talking like two crazy people who had somehow found each other at
+        exactly the right moment.<br><br>
+
+        That night planted a seed neither of us noticed at the time. What started as a distraction from
+        our own pain quietly became something we both needed more than we knew.
+      </p>
+
+      <div class="quote">
+        <p>"Some conversations don't end — they just keep growing into something beautiful."</p>
+        <cite>— 7 November, the night it all started</cite>
+      </div>
+    </div>
+
+    <div class="nav">
+      <a href="{{ url_for('home') }}" class="btn btn-home">🏠 &nbsp; Home</a>
+      <a href="{{ url_for('story') }}" class="btn btn-next">Our Story &nbsp; →</a>
+    </div>
+  </div>
+
+  <script>
+    const se = document.getElementById('stars');
+    for (let i = 0; i < 100; i++) {
+      const s = document.createElement('div'); s.className = 'star';
+      const sz = Math.random()*2+.6;
+      s.style.cssText=`width:${sz}px;height:${sz}px;top:${Math.random()*100}%;left:${Math.random()*100}%;animation-duration:${2.5+Math.random()*4}s;animation-delay:${Math.random()*6}s;`;
+      se.appendChild(s);
+    }
+  </script>
+</body>
+</html>

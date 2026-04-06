@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Story 💌</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400&family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300;1,500&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:    #100408;
+      --rose:  #c94f72;
+      --blush: #e8a0b4;
+      --gold:  #c9996a;
+      --cream: #f7ede8;
+      --muted: #7a4458;
+      --surface: rgba(30,8,18,.75);
+    }
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      background-image:
+        radial-gradient(ellipse 70% 40% at 10% 10%, rgba(201,79,114,.18) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 40% at 90% 90%, rgba(201,153,106,.12) 0%, transparent 50%);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      display: flex; flex-direction: column; align-items: center;
+      padding: 60px 20px 100px;
+    }
+    .stars{position:fixed;inset:0;pointer-events:none;z-index:0;}
+    .star{position:absolute;border-radius:50%;background:#f5dde3;animation:tw ease-in-out infinite;}
+    @keyframes tw{0%,100%{opacity:.05;}50%{opacity:.4;}}
+
+    .wrap { position: relative; z-index: 1; max-width: 680px; width: 100%; }
+
+    .back {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-style: italic; font-size: 13px; color: var(--muted);
+      text-decoration: none; margin-bottom: 50px;
+      transition: color .2s;
+    }
+    .back:hover { color: var(--blush); }
+
+    /* header */
+    .page-header { text-align: center; margin-bottom: 64px; animation: rise 1s ease both; }
+    @keyframes rise{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+    .page-header .icon { font-size: 52px; display: block; margin-bottom: 16px;
+      animation: heartbeat 2.2s ease-in-out infinite; }
+    @keyframes heartbeat{0%,100%{transform:scale(1);}14%{transform:scale(1.18);}28%{transform:scale(1);}42%{transform:scale(1.1);}}
+    .page-header h1 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(22px, 5vw, 36px);
+      font-weight: 400; color: var(--cream); letter-spacing: .08em;
+    }
+    .page-header h1 span { color: var(--rose); }
+    .page-header p {
+      font-style: italic; font-size: 16px;
+      color: var(--blush); opacity: .75; margin-top: 8px;
+    }
+
+    /* timeline */
+    .timeline { position: relative; padding-left: 28px; }
+    .timeline::before {
+      content: ''; position: absolute;
+      left: 0; top: 8px; bottom: 8px; width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--rose) 10%, var(--gold) 50%, var(--rose) 90%, transparent);
+    }
+
+    .event {
+      position: relative; margin-bottom: 52px;
+      animation: rise .8s ease both;
+    }
+    .event:nth-child(1){animation-delay:.1s;}
+    .event:nth-child(2){animation-delay:.22s;}
+    .event:nth-child(3){animation-delay:.34s;}
+    .event:nth-child(4){animation-delay:.46s;}
+    .event:nth-child(5){animation-delay:.58s;}
+    .event:nth-child(6){animation-delay:.70s;}
+
+    /* dot */
+    .dot {
+      position: absolute; left: -34px; top: 6px;
+      width: 13px; height: 13px; border-radius: 50%;
+      border: 2px solid var(--rose);
+      background: var(--bg);
+      transition: transform .3s;
+    }
+    .event:hover .dot { transform: scale(1.4); background: var(--rose); }
+
+    .event-inner {
+      background: var(--surface);
+      border: 1px solid rgba(201,79,114,.15);
+      border-radius: 6px; padding: 28px 32px;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 4px 24px rgba(0,0,0,.4);
+      transition: border-color .3s, box-shadow .3s;
+    }
+    .event:hover .event-inner {
+      border-color: rgba(201,79,114,.4);
+      box-shadow: 0 6px 32px rgba(201,79,114,.15);
+    }
+
+    .event-date {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 10px; letter-spacing: .2em;
+      color: var(--gold); margin-bottom: 10px; display: block;
+    }
+    .event-emoji { font-size: 24px; margin-bottom: 10px; display: block; }
+
+    .event-title {
+      font-family: 'Playfair Display', serif;
+      font-style: italic; font-size: clamp(18px, 3.5vw, 22px);
+      color: var(--cream); font-weight: 600;
+      margin-bottom: 14px; line-height: 1.3;
+    }
+    .event-title.fight { color: #e07070; }
+    .event-title.love  { color: var(--blush); }
+    .event-title.gold  { color: var(--gold); }
+
+    .event-text {
+      font-size: clamp(14px, 2.2vw, 16px);
+      line-height: 1.9; color: #c4a0a8; font-style: italic;
+    }
+    .event-text .em { color: var(--blush); font-style: normal; font-weight: 500; }
+    .event-text .gold { color: var(--gold); font-style: normal; font-weight: 500; }
+
+    /* special proposal card */
+    .proposal-glow {
+      border-color: rgba(201,153,106,.45) !important;
+      box-shadow: 0 0 0 1px rgba(201,153,106,.2), 0 8px 40px rgba(201,79,114,.25) !important;
+      background: linear-gradient(135deg, rgba(40,15,25,.9) 0%, rgba(30,10,18,.9) 100%) !important;
+    }
+    .proposal-glow .event-date { color: var(--rose); }
+
+    /* final quote */
+    .final-quote {
+      text-align: center; margin-top: 60px; padding: 40px 32px;
+      border: 1px solid rgba(201,79,114,.18);
+      border-radius: 6px;
+      background: var(--surface);
+      animation: rise 1s .8s both;
+    }
+    .final-quote .ql {
+      font-family: 'Playfair Display', serif; font-style: italic;
+      font-size: clamp(16px, 3vw, 20px);
+      color: var(--blush); line-height: 1.75;
+    }
+    .final-quote .sig {
+      margin-top: 20px; font-size: 13px;
+      color: var(--muted); letter-spacing: .12em; font-style: italic;
+    }
+
+    /* nav */
+    .nav {
+      display: flex; justify-content: center; gap: 20px;
+      margin-top: 48px; animation: rise 1s .95s both;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 0 32px; height: 50px;
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 11px; letter-spacing: .1em;
+      color: var(--cream); text-decoration: none;
+      border-radius: 4px; transition: transform .15s;
+    }
+    .btn-home {
+      background: linear-gradient(135deg, #5a1530 0%, #2e0a18 100%);
+      box-shadow: 0 0 0 1px rgba(201,79,114,.35), 0 4px 16px rgba(0,0,0,.4);
+    }
+    .btn-nov {
+      background: linear-gradient(135deg, #3d1f6e 0%, #1a0d2e 100%);
+      box-shadow: 0 0 0 1px rgba(124,77,189,.4), 0 4px 16px rgba(0,0,0,.4);
+    }
+    .btn:hover{transform:scale(1.06);}
+    .btn:active{transform:scale(.97);}
+
+    @media(max-width:480px){
+      .event-inner{padding:22px 20px;}
+      .nav{flex-direction:column;align-items:center;}
+    }
+  </style>
+</head>
+<body>
+  <div class="stars" id="stars"></div>
+
+  <div class="wrap">
+    <a href="{{ url_for('home') }}" class="back">← back home</a>
+
+    <div class="page-header">
+      <span class="icon">💌</span>
+      <h1>Our <span>Story</span></h1>
+      <p>Every fight, every tear, every laugh — it all led here.</p>
+    </div>
+
+    <div class="timeline">
+
+      <!-- 7 Nov -->
+      <div class="event">
+        <div class="dot"></div>
+        <div class="event-inner">
+          <span class="event-date">7 November 2024</span>
+          <span class="event-emoji">🌙</span>
+          <div class="event-title love">The First "Hii"</div>
+          <p class="event-text">
+            A tired boy and a sad girl found each other in the middle of the night.
+            You were healing from a breakup, I was drained from exams — and somehow we
+            ended up talking like <span class="em">crazy people who had known each other forever</span>.
+            You thought it was just one night. It wasn't.
+          </p>
+        </div>
+      </div>
+
+      <!-- 27 Jan -->
+      <div class="event">
+        <div class="dot" style="border-color:#e07070;"></div>
+        <div class="event-inner">
+          <span class="event-date">27 January 2025</span>
+          <span class="event-emoji">⚡</span>
+          <div class="event-title fight">The First Big Fight</div>
+          <p class="event-text">
+            That day broke something open. You said words that hurt,
+            and I cried because <span class="em">I didn't want to leave</span> — even though we were
+            just friends. You told me to go. I couldn't. Three days of silence passed,
+            and then somehow we came back to each other <span class="gold">closer than before</span>.
+            That fight showed us both how much we actually cared.
+          </p>
+        </div>
+      </div>
+
+      <!-- Best friends -->
+      <div class="event">
+        <div class="dot" style="border-color:var(--gold);"></div>
+        <div class="event-inner">
+          <span class="event-date">Early February 2025</span>
+          <span class="event-emoji">🤝</span>
+          <div class="event-title gold">Best Friends</div>
+          <p class="event-text">
+            After the storm came something warmer. We rebuilt — and this time
+            it was different. <span class="em">We became best friends.</span> The kind where
+            you tell everything, laugh at nothing, and feel safe in the silence.
+          </p>
+        </div>
+      </div>
+
+      <!-- 3 Mar -->
+      <div class="event">
+        <div class="dot" style="border-color:#e07070;"></div>
+        <div class="event-inner">
+          <span class="event-date">3 March 2025</span>
+          <span class="event-emoji">🌪️</span>
+          <div class="event-title fight">The Toughest Fight</div>
+          <p class="event-text">
+            This one nearly broke us completely. It was about her past, her first ex —
+            and I was <span class="em">ready to walk away for good</span>. But then your text came.
+            One message. And I stopped. I didn't want to go. I just couldn't.
+            I wasn't interested at first — guarded, distant — but slowly, slowly,
+            <span class="gold">you pulled me back in</span>. Three days later we were talking
+            like something neither of us could name yet.
+          </p>
+        </div>
+      </div>
+
+      <!-- 12 Mar -->
+      <div class="event">
+        <div class="dot" style="border-color:var(--rose);"></div>
+        <div class="event-inner">
+          <span class="event-date">12 March 2025</span>
+          <span class="event-emoji">💬</span>
+          <div class="event-title love">He Asked</div>
+          <p class="event-text">
+            After everything — the fights, the tears, the almost-endings —
+            <span class="em">Tanmay finally said what he felt.</span>
+            Three words, one question, a heart wide open.
+            The boy who had cried not wanting to lose her
+            was now asking to keep her — forever.
+          </p>
+        </div>
+      </div>
+
+      <!-- 13 Mar -->
+      <div class="event">
+        <div class="dot" style="border-color:var(--gold); background:var(--gold);"></div>
+        <div class="event-inner proposal-glow">
+          <span class="event-date">13 March 2025 ✦ She Said Yes</span>
+          <span class="event-emoji">💍</span>
+          <div class="event-title gold">Rohisha Kesharwani ♡</div>
+          <p class="event-text">
+            And just like that — the world changed. You said yes.
+            <span class="gold">Rohisha Kesharwani</span> became something more:
+            she became <span class="em">Rohisha Kesharwani</span> — carrying a name
+            that now holds both of ours. Every fight led here.
+            Every tear was worth it. Every almost-ending
+            was just the story making room for this beautiful beginning.
+          </p>
+        </div>
+      </div>
+
+    </div><!-- end timeline -->
+
+    <div class="final-quote">
+      <p class="ql">
+        "We weren't supposed to survive any of it —<br>
+        the fights, the silences, the almost-goodbyes.<br>
+        But here we are. Still here. Still us.<br>
+        <em>Happy 1 month, Rohisha. ♡</em>"
+      </p>
+      <p class="sig">— Tanmay, with all his heart</p>
+    </div>
+
+    <div class="nav">
+      <a href="{{ url_for('home') }}" class="btn btn-home">🏠 &nbsp; Home</a>
+      <a href="{{ url_for('nov7') }}" class="btn btn-nov">🌙 &nbsp; 7 November</a>
+    </div>
+  </div>
+
+  <script>
+    const se = document.getElementById('stars');
+    for (let i = 0; i < 90; i++) {
+      const s = document.createElement('div'); s.className = 'star';
+      const sz = Math.random()*2+.6;
+      s.style.cssText=`width:${sz}px;height:${sz}px;top:${Math.random()*100}%;left:${Math.random()*100}%;animation-duration:${2+Math.random()*5}s;animation-delay:${Math.random()*7}s;`;
+      se.appendChild(s);
+    }
+  </script>
+</body>
+</html>

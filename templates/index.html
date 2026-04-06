@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rohisha Kesharwani 🌹</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300;1,500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #110408;
+      --rose: #c94f72;
+      --blush: #e8a0b4;
+      --gold: #c9996a;
+      --cream: #f7ede8;
+      --muted: #7a4458;
+    }
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      background-image:
+        radial-gradient(ellipse 70% 50% at 20% 20%, rgba(201,79,114,.2) 0%, transparent 60%),
+        radial-gradient(ellipse 55% 45% at 80% 80%, rgba(201,153,106,.12) 0%, transparent 55%);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      overflow: hidden;
+    }
+    .stars { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+    .star {
+      position: absolute; border-radius: 50%;
+      background: var(--blush);
+      animation: twinkle ease-in-out infinite;
+    }
+    @keyframes twinkle {
+      0%,100% { opacity:.06; } 50% { opacity:.5; }
+    }
+    .hearts { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+    .heart {
+      position: absolute; bottom: -30px; opacity: 0;
+      animation: floatUp linear infinite; user-select: none;
+    }
+    @keyframes floatUp {
+      0%   { transform: translateY(0) rotate(-8deg); opacity:0; }
+      10%  { opacity:.55; }
+      90%  { opacity:.2; }
+      100% { transform: translateY(-110vh) rotate(15deg); opacity:0; }
+    }
+    .container {
+      position: relative; z-index: 1;
+      display: flex; flex-direction: column;
+      align-items: center; text-align: center;
+      padding: 30px 20px;
+      animation: rise 1.2s cubic-bezier(.22,.61,.36,1) both;
+    }
+    @keyframes rise {
+      from { opacity:0; transform: translateY(28px); }
+      to   { opacity:1; transform: translateY(0); }
+    }
+    .badge {
+      font-style: italic; font-size: 12px;
+      letter-spacing: .22em; color: var(--gold);
+      border: 1px solid rgba(201,153,106,.3);
+      border-radius: 30px; padding: 5px 22px;
+      margin-bottom: 30px;
+      animation: rise 1s .2s both;
+    }
+    .hero {
+      font-size: 68px; line-height: 1;
+      margin-bottom: 18px;
+      animation: heartbeat 2s ease-in-out infinite, rise 1s .1s both;
+    }
+    @keyframes heartbeat {
+      0%,100% { transform:scale(1); }
+      14% { transform:scale(1.2); }
+      28% { transform:scale(1); }
+      42% { transform:scale(1.1); }
+    }
+    h1 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(20px, 4.5vw, 34px);
+      font-weight: 400; color: var(--cream);
+      letter-spacing: .08em; line-height: 1.35;
+      margin-bottom: 8px;
+      animation: rise 1s .3s both;
+    }
+    h1 span { color: var(--rose); }
+    .sub {
+      font-style: italic; font-size: clamp(14px, 2.5vw, 18px);
+      color: var(--blush); opacity: .8;
+      margin-bottom: 14px;
+      animation: rise 1s .4s both;
+    }
+    .counter-line {
+      font-style: italic; font-size: 13px;
+      color: var(--muted); letter-spacing: .1em;
+      margin-bottom: 44px;
+      animation: rise 1s .5s both;
+    }
+    .counter-line strong { color: var(--gold); font-style: normal; }
+    .divider {
+      display: flex; align-items: center; gap: 14px;
+      width: 260px; margin-bottom: 40px;
+      animation: rise 1s .55s both;
+    }
+    .divider::before, .divider::after {
+      content: ''; flex: 1; height: 1px;
+    }
+    .divider::before { background: linear-gradient(to right, transparent, var(--gold)); }
+    .divider::after  { background: linear-gradient(to left,  transparent, var(--gold)); }
+    .divider span { color: var(--gold); font-size: 16px; }
+    .btn-group {
+      display: flex; flex-direction: column; gap: 16px; align-items: center;
+      animation: rise 1s .7s both;
+    }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 10px; padding: 0 44px; height: 56px;
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 12px; letter-spacing: .12em;
+      color: var(--cream); text-decoration: none;
+      border-radius: 4px; position: relative; overflow: hidden;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--rose) 0%, #7a1f3a 100%);
+      box-shadow: 0 0 0 1px rgba(201,79,114,.4), 0 6px 24px rgba(201,79,114,.3);
+    }
+    .btn-secondary {
+      background: linear-gradient(135deg, #5a2030 0%, #2e0d1e 100%);
+      box-shadow: 0 0 0 1px rgba(201,153,106,.3), 0 4px 16px rgba(0,0,0,.4);
+    }
+    .btn::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,.1) 50%, transparent 70%);
+      transform: translateX(-100%); transition: transform .5s ease;
+    }
+    .btn:hover { transform: scale(1.06); }
+    .btn:hover::before { transform: translateX(100%); }
+    .btn:active { transform: scale(.97); }
+  </style>
+</head>
+<body>
+  <div class="stars" id="stars"></div>
+  <div class="hearts" id="hearts"></div>
+
+  <div class="container">
+    <div class="badge">tanmay &nbsp;✦&nbsp; rohisha</div>
+    <span class="hero">🌹</span>
+    <h1>To <span>Rohisha</span><br>Kesharwani</h1>
+    <p class="sub">A little world built just for you.</p>
+    <p class="counter-line" id="counter">counting our days together…</p>
+    <div class="divider"><span>♡</span></div>
+    <div class="btn-group">
+      <a href="{{ url_for('nov7') }}" class="btn btn-primary">✦ &nbsp; 7th November &nbsp; ✦</a>
+      <a href="{{ url_for('story') }}" class="btn btn-secondary">♡ &nbsp; Our Story &nbsp; ♡</a>
+    </div>
+  </div>
+
+  <script>
+    // stars
+    const se = document.getElementById('stars');
+    for (let i = 0; i < 90; i++) {
+      const s = document.createElement('div'); s.className = 'star';
+      const sz = Math.random()*2.4+.8;
+      s.style.cssText = `width:${sz}px;height:${sz}px;top:${Math.random()*100}%;left:${Math.random()*100}%;animation-duration:${2+Math.random()*4}s;animation-delay:${Math.random()*6}s;`;
+      se.appendChild(s);
+    }
+    // hearts
+    const he = document.getElementById('hearts');
+    ['♡','❤','🌸','✦','♡','❤'].forEach((e,i)=>{
+      const h = document.createElement('div'); h.className='heart'; h.textContent=e;
+      h.style.cssText=`left:${10+Math.random()*80}%;font-size:${10+Math.random()*10}px;animation-duration:${9+Math.random()*10}s;animation-delay:${Math.random()*12}s;`;
+      he.appendChild(h);
+    });
+    // counter from 13 March 2025 (relationship start)
+    const start = new Date('2025-03-13T00:00:00');
+    const days = Math.floor((new Date()-start)/86400000);
+    document.getElementById('counter').innerHTML =
+      `together for <strong>${days}</strong> beautiful day${days!==1?'s':''}  ♡`;
+  </script>
+</body>
+</html>
